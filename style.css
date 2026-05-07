@@ -60,6 +60,7 @@ body {
     padding-bottom: 1.25rem;
     border-bottom: 1px solid var(--Rborder);
     margin-bottom: 1.25rem;
+    gap: 1rem;
 }
 
 .clear-btn {
@@ -73,6 +74,7 @@ body {
     cursor: pointer;
     font-family: "DM Sans", sans-serif;
     transition: all 0.2s;
+    white-space: nowrap;
 }
 
 .clear-btn:hover {
@@ -151,6 +153,7 @@ body {
     font-family: "DM Sans", sans-serif;
     outline: none;
     transition: border 0.2s;
+    width: 100%;
 }
 
 .inp:focus {
@@ -340,6 +343,7 @@ option {
     padding: 1rem 1.2rem;
     cursor: pointer;
     transition: background 0.2s;
+    gap: 0.75rem;
 }
 
 .person-head:hover {
@@ -361,6 +365,11 @@ option {
     transition: background 0.3s;
 }
 
+.person-info {
+    flex: 1;
+    min-width: 0;
+}
+
 .person-nm {
     font-weight: 600;
     font-size: 0.97rem;
@@ -377,6 +386,7 @@ option {
     font-size: 1.3rem;
     letter-spacing: 1px;
     color: var(--R);
+    white-space: nowrap;
 }
 
 .chevron {
@@ -423,11 +433,13 @@ option {
     padding: 0.55rem 0.9rem;
     font-size: 0.84rem;
     border: 1px solid var(--border);
+    gap: 0.5rem;
 }
 
 .oi-nm {
     flex: 1;
     font-weight: 500;
+    min-width: 0;
 }
 
 .oi-ctrl {
@@ -450,6 +462,7 @@ option {
     justify-content: center;
     transition: all 0.15s;
     line-height: 1;
+    flex-shrink: 0;
 }
 
 .qbtn:hover {
@@ -482,6 +495,7 @@ option {
     margin-left: 0.4rem;
     transition: color 0.15s;
     padding: 0;
+    flex-shrink: 0;
 }
 
 .oi-del:hover {
@@ -496,6 +510,7 @@ option {
     margin-top: 0.9rem;
     padding-top: 0.85rem;
     border-top: 1px solid var(--Rborder);
+    gap: 0.75rem;
 }
 
 .pay-total-lbl {
@@ -511,6 +526,12 @@ option {
     letter-spacing: 1px;
 }
 
+.pay-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
 .paid-badge {
     background: var(--Gbg);
     color: var(--G);
@@ -522,6 +543,7 @@ option {
     align-items: center;
     gap: 5px;
     border: 1px solid rgba(39, 168, 91, 0.3);
+    white-space: nowrap;
 }
 
 /* ===== DASHBOARD METRICS ===== */
@@ -627,12 +649,14 @@ option {
     padding: 0.65rem 0.95rem;
     font-size: 0.84rem;
     border: 1px solid var(--border);
+    gap: 0.5rem;
 }
 
 .ph-left {
     display: flex;
     align-items: center;
     gap: 0.65rem;
+    min-width: 0;
 }
 
 .ph-av {
@@ -648,6 +672,7 @@ option {
     color: #fff;
     font-family: "Bebas Neue", sans-serif;
     letter-spacing: 1px;
+    flex-shrink: 0;
 }
 
 .ph-nm {
@@ -665,6 +690,7 @@ option {
     font-family: "Bebas Neue", sans-serif;
     font-size: 1.05rem;
     letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 /* ===== BARS ===== */
@@ -718,6 +744,7 @@ option {
     justify-content: center;
     gap: 1.5rem;
     padding: 0.4rem 0;
+    flex-wrap: wrap;
 }
 
 .ring-wrap {
@@ -807,4 +834,308 @@ option {
 .toast.show {
     transform: translateY(0);
     opacity: 1;
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+
+/* Tablet (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+    #app {
+        padding: 1rem;
+    }
+
+    .summary-strip {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .prod-grid {
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    }
+
+    .logo {
+        font-size: 2rem;
+    }
+
+    .logo small {
+        font-size: 0.75rem;
+    }
+}
+
+/* Tablet pequeno e celulares grandes (600px - 768px) */
+@media screen and (max-width: 768px) {
+    #app {
+        padding: 0.8rem;
+    }
+
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+    }
+
+    .clear-btn {
+        align-self: flex-end;
+    }
+
+    .tabs {
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .tab {
+        text-align: center;
+        padding: 0.7rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    .prod-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 0.5rem;
+    }
+
+    .summary-strip {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    /* Dashboard grid - empilha em telas menores */
+    .dash-section {
+        grid-column: 1 / -1;
+    }
+
+    .person-head {
+        flex-wrap: wrap;
+    }
+
+    .person-total-val {
+        font-size: 1.1rem;
+    }
+
+    .order-row {
+        flex-direction: column;
+    }
+
+    .order-row .sel,
+    .order-row .inp {
+        width: 100%;
+    }
+
+    .pay-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+    }
+
+    .pay-actions {
+        width: 100%;
+    }
+
+    .pay-actions .btn {
+        flex: 1;
+        text-align: center;
+    }
+
+    .oi {
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .oi-nm {
+        flex: 1 1 100%;
+    }
+
+    .oi-ctrl {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .oi-price {
+        min-width: auto;
+    }
+
+    .prog-ring {
+        gap: 1rem;
+    }
+}
+
+/* Celulares pequenos (até 600px) */
+@media screen and (max-width: 600px) {
+    .logo {
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+    }
+
+    .logo small {
+        font-size: 0.7rem;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .prod-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-strip {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.4rem;
+    }
+
+    .metric {
+        padding: 0.7rem;
+    }
+
+    .metric-lbl {
+        font-size: 0.68rem;
+    }
+
+    .metric-num {
+        font-size: 1.2rem;
+    }
+
+    .person-head {
+        padding: 0.8rem;
+    }
+
+    .avatar {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+
+    .person-nm {
+        font-size: 0.9rem;
+    }
+
+    .person-total-val {
+        font-size: 1rem;
+    }
+
+    .pbody {
+        padding: 0 0.8rem 0.8rem;
+    }
+
+    .ph-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+    }
+
+    .ph-val {
+        align-self: flex-end;
+    }
+
+    .bar-nm {
+        min-width: 60px;
+        font-size: 0.75rem;
+    }
+
+    .bar-val {
+        min-width: 55px;
+        font-size: 0.72rem;
+    }
+
+    .toast {
+        left: 1rem;
+        right: 1rem;
+        max-width: none;
+        text-align: center;
+    }
+
+    /* Ajustes para formulários */
+    .new-person-row {
+        flex-direction: column;
+    }
+
+    .new-person-row .btn {
+        width: 100%;
+    }
+}
+
+/* Celulares muito pequenos (até 400px) */
+@media screen and (max-width: 400px) {
+    #app {
+        padding: 0.5rem;
+    }
+
+    .summary-strip {
+        grid-template-columns: 1fr;
+    }
+
+    .tab {
+        font-size: 0.78rem;
+        padding: 0.6rem;
+    }
+
+    .btn {
+        padding: 0.55rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .oi {
+        font-size: 0.78rem;
+    }
+
+    .qbtn {
+        width: 24px;
+        height: 24px;
+        font-size: 0.9rem;
+    }
+
+    .qnum {
+        font-size: 0.82rem;
+        min-width: 18px;
+    }
+
+    .pay-total-val {
+        font-size: 1.3rem;
+    }
+}
+
+/* Ajustes para orientação paisagem em celulares */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .tabs {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .tab {
+        font-size: 0.75rem;
+        padding: 0.5rem;
+    }
+
+    .summary-strip {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .pay-history {
+        max-height: 150px;
+    }
+}
+
+/* Suporte para telas muito grandes */
+@media screen and (min-width: 1440px) {
+    #app {
+        max-width: 1200px;
+    }
+
+    .prod-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+
+    .summary-strip {
+        gap: 1rem;
+    }
+
+    .metric {
+        padding: 1.2rem 1.5rem;
+    }
+
+    .metric-num {
+        font-size: 1.8rem;
+    }
 }
