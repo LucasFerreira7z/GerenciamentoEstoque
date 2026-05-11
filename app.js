@@ -252,21 +252,21 @@ function renderPersons(){
     return `
     <div class="person-block" data-pid="${per.id}">
       <div class="person-head" onclick="toggleP(${per.id})">
-        <div style="display:flex;align-items:center;gap:.7rem">
+        <div class="person-head-left">
           <div class="avatar" style="background:${col(idx)}">${ini(per.name)}</div>
           <div>
             <div class="person-nm">${esc(per.name)} <span class="tag-pend">pendente</span></div>
             <div class="person-sub">${cnt} ite${cnt===1?'m':'ns'} no pedido</div>
           </div>
         </div>
-        <div style="display:flex;align-items:center;gap:.7rem">
+        <div class="person-head-right">
           <div class="person-total-val">${fmt(tot)}</div>
           <i class="ti ti-chevron-down chevron ${per.open?'open':''}"></i>
         </div>
       </div>
       <div class="pbody ${per.open?'':'hidden'}">
         <div class="order-row">
-          <select class="sel" id="sel-${per.id}" style="flex:2;min-width:140px">${opts}</select>
+          <select class="sel" id="sel-${per.id}">${opts}</select>
           <button class="btn btn-sm" onclick="addItem(${per.id})"><i class="ti ti-plus"></i> Item</button>
           <button class="btn btn-sm btn-ghost" onclick="remPerson(${per.id})"><i class="ti ti-trash"></i></button>
         </div>
@@ -290,7 +290,7 @@ function renderPersons(){
             <div class="pay-total-lbl">Total do pedido</div>
             <div class="pay-total-val">${fmt(tot)}</div>
           </div>
-          <button class="btn btn-green" onclick="confirmPay(${per.id})"
+          <button class="btn btn-green pay-btn-full" onclick="confirmPay(${per.id})"
             ${per.items.length===0 ? 'disabled style="opacity:.35;cursor:not-allowed"' : ''}>
             <i class="ti ti-cash"></i> Confirmar pagamento
           </button>
@@ -427,17 +427,17 @@ function renderDash(){
         <div class="ring-sub">pagos</div>
       </div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:.65rem;justify-content:center">
-      <div style="display:flex;align-items:center;gap:.5rem;font-size:.85rem">
-        <span style="width:10px;height:10px;border-radius:2px;background:#27a85b;flex-shrink:0"></span>
+    <div class="ring-legend">
+      <div class="ring-legend-row">
+        <span class="ring-dot" style="background:#27a85b"></span>
         <span>${paidCount} pag${paidCount===1?'ou':'aram'} — <strong style="color:#27a85b">${fmt(totalReceita)}</strong></span>
       </div>
-      <div style="display:flex;align-items:center;gap:.5rem;font-size:.85rem">
-        <span style="width:10px;height:10px;border-radius:2px;background:var(--R);flex-shrink:0"></span>
+      <div class="ring-legend-row">
+        <span class="ring-dot" style="background:var(--R)"></span>
         <span>${persons.length} pendente${persons.length===1?'':'s'} — <strong style="color:var(--R)">${fmt(pendente)}</strong></span>
       </div>
-      <div style="display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--muted)">
-        <span style="width:10px;height:10px;border-radius:2px;background:#2a2a2a;flex-shrink:0"></span>
+      <div class="ring-legend-row" style="color:var(--muted)">
+        <span class="ring-dot" style="background:#2a2a2a"></span>
         <span>${totalPessoas} pessoa${totalPessoas===1?'':'s'} no total</span>
       </div>
     </div>`;

@@ -2,7 +2,16 @@
 <html lang="pt-BR">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+        />
+        <meta name="theme-color" content="#0a0a0a" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+        />
         <title>Estoque do Beiço</title>
         <link
             rel="stylesheet"
@@ -14,10 +23,10 @@
         <div id="app">
             <!-- TOP BAR -->
             <div class="topbar">
-                <div>
-                    <div class="logo">
-                        STOQUE<small>gestão de estoque &amp; pedidos</small>
-                    </div>
+                <div class="logo">
+                    Estoque do Beiço<small
+                        >gestão de estoque &amp; pedidos</small
+                    >
                 </div>
                 <button class="clear-btn" onclick="clearAll()">
                     <i class="ti ti-trash"></i> Limpar tudo
@@ -27,13 +36,16 @@
             <!-- TABS -->
             <div class="tabs">
                 <button class="tab active" onclick="showTab('estoque')">
-                    <i class="ti ti-package"></i> Estoque
+                    <i class="ti ti-package"></i>
+                    <span class="tab-label">Estoque</span>
                 </button>
                 <button class="tab" onclick="showTab('pedidos')">
-                    <i class="ti ti-tools-kitchen-2"></i> Pedidos
+                    <i class="ti ti-tools-kitchen-2"></i>
+                    <span class="tab-label">Pedidos</span>
                 </button>
                 <button class="tab" onclick="showTab('dashboard')">
-                    <i class="ti ti-chart-bar"></i> Dashboard
+                    <i class="ti ti-chart-bar"></i>
+                    <span class="tab-label">Dashboard</span>
                 </button>
             </div>
 
@@ -41,12 +53,11 @@
             <div id="tab-estoque" class="section active">
                 <div class="card">
                     <div class="card-title">Adicionar produto</div>
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap">
+                    <div class="add-prod-row">
                         <input
                             class="inp"
                             id="pn"
                             placeholder="Nome do produto"
-                            style="flex: 2; min-width: 130px"
                         />
                         <input
                             class="inp"
@@ -54,8 +65,8 @@
                             type="number"
                             min="0"
                             step="0.01"
+                            inputmode="decimal"
                             placeholder="Preço de venda (R$)"
-                            style="flex: 1; min-width: 120px"
                         />
                         <input
                             class="inp"
@@ -63,8 +74,8 @@
                             type="number"
                             min="0"
                             step="0.01"
+                            inputmode="decimal"
                             placeholder="Custo (R$) — opcional"
-                            style="flex: 1; min-width: 130px"
                         />
                         <button class="btn" onclick="addProd()">
                             <i class="ti ti-plus"></i> Adicionar
@@ -108,7 +119,8 @@
                         style="flex: 1"
                     />
                     <button class="btn" onclick="addPerson()">
-                        <i class="ti ti-user-plus"></i> Adicionar
+                        <i class="ti ti-user-plus"></i>
+                        <span class="tab-label">Adicionar</span>
                     </button>
                 </div>
                 <div id="persons-list">
@@ -121,20 +133,9 @@
 
             <!-- ═══ DASHBOARD ═══ -->
             <div id="tab-dashboard" class="section">
-                <!-- Métricas -->
                 <div class="summary-strip" id="metrics"></div>
-
-                <!-- Lucro / Prejuízo (só aparece quando há custo cadastrado) -->
                 <div id="lucro-banner" style="display: none"></div>
-
-                <!-- Pagamentos + Barras -->
-                <div
-                    style="
-                        display: grid;
-                        grid-template-columns: 1fr 1fr;
-                        gap: 0.75rem;
-                    "
-                >
+                <div class="dash-grid">
                     <div class="dash-section">
                         <div class="dash-title">
                             <i class="ti ti-clock-check"></i> Pagamentos
@@ -158,8 +159,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Anel de status -->
                 <div class="dash-section">
                     <div class="dash-title">
                         <i class="ti ti-circle-check"></i> Status de pagamentos
