@@ -12,7 +12,7 @@
             name="apple-mobile-web-app-status-bar-style"
             content="black-translucent"
         />
-        <title>Estoque do Beiço</title>
+        <title>Estoque</title>
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
@@ -24,9 +24,7 @@
             <!-- TOP BAR -->
             <div class="topbar">
                 <div class="logo">
-                    Estoque do Beiço<small
-                        >gestão de estoque &amp; pedidos</small
-                    >
+                    Estoque<small>gestão de estoque &amp; pedidos</small>
                 </div>
                 <button class="clear-btn" onclick="clearAll()">
                     <i class="ti ti-trash"></i> Limpar tudo
@@ -67,15 +65,6 @@
                             step="0.01"
                             inputmode="decimal"
                             placeholder="Preço de venda (R$)"
-                        />
-                        <input
-                            class="inp"
-                            id="pc2"
-                            type="number"
-                            min="0"
-                            step="0.01"
-                            inputmode="decimal"
-                            placeholder="Custo (R$) — opcional"
                         />
                         <button class="btn" onclick="addProd()">
                             <i class="ti ti-plus"></i> Adicionar
@@ -134,8 +123,7 @@
             <!-- ═══ DASHBOARD ═══ -->
             <div id="tab-dashboard" class="section">
                 <div class="summary-strip" id="metrics"></div>
-                <div id="lucro-banner" style="display: none"></div>
-                <div class="dash-grid">
+<div class="dash-grid">
                     <div class="dash-section">
                         <div class="dash-title">
                             <i class="ti ti-clock-check"></i> Pagamentos
